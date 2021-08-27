@@ -12,19 +12,7 @@ ser=serial.Serial("/dev/ttyS0", baudrate=9600, timeout=0.5)
 
 while True:
   try:
-    dataout = pynmea2.NMEAStreamReader()
-    newdata = (str)(ser.readline())
-    print(newdata)
-
-    if newdata[0:6] == "$GPRMC":
-      print('entrou')
-      newmsg=pynmea2.parse(newdata)
-      lat=newmsg.latitude
-      lng=newmsg.longitude
-      gps = "Latitude=" + str(lat) + "and Longitude=" + str(lng)
-      print(gps)
-
-    #received_data = (str)(ser.readline()) #read NMEA string received
-    #print(received_data, "\n")
+    received_data = (str)(ser.readline()) #read NMEA string received
+    print(received_data, "\n")
   except Exception as e:
     print(e)
