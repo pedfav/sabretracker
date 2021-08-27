@@ -17,6 +17,7 @@ while True:
     print(newdata.decode('utf-8'))
 
     if newdata[0:6] == "$GPRMC":
+      print('entrou')
       newmsg=pynmea2.parse(newdata)
       lat=newmsg.latitude
       lng=newmsg.longitude
