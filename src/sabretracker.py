@@ -14,7 +14,6 @@ while True:
   try:
     dataout = pynmea2.NMEAStreamReader()
     newdata = (str)(ser.readline())
-    newdata.decode('utf-8')
 
     if newdata[0:6] == "$GPRMC":
       print('entrou')
