@@ -13,10 +13,5 @@ while True:
   try:
     received_data = (str)(ser.readline()) #read NMEA string received
     print(received_data, "\n")
-    lcd.write_string('Sabretracker')
-    lcd.crlf()
-    lcd.write_string('Sabretracker')
-    print('print lcd')
-    time.sleep(5)
   except Exception as e:
     print(e)
