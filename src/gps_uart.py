@@ -1,4 +1,4 @@
-from machine import Pin, UART, I2C
+from machine import Pin, UART
 #Import utime library to implement delay
 import utime, time
 
