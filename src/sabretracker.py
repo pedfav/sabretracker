@@ -35,7 +35,7 @@ while True:
         nmea_longitude = NMEA_buff[3]               #extract longitude from GPGGA string
         print("NMEA Time: ", nmea_time,'\n')
         lat = nmea_latitude
-        lat = convert_to_degrees(lat)
+        #lat = convert_to_degrees(lat)
         longi = nmea_longitude
-        longi = convert_to_degrees(longi)
+        #longi = convert_to_degrees(longi)
         print ("NMEA Latitude:", lat,"NMEA Longitude:", longi,'\n') 
