@@ -16,6 +16,13 @@ while True:
     newdata = ser.readline()
     print(newdata.decode('utf-8'))
 
+    if newdata[0:6] == "$GPRMC":
+      newmsg=pynmea2.parse(newdata)
+      lat=newmsg.latitude
+      lng=newmsg.longitude
+      gps = "Latitude=" + str(lat) + "and Longitude=" + str(lng)
+      print(gps)
+
     #received_data = (str)(ser.readline()) #read NMEA string received
     #print(received_data, "\n")
   except Exception as e:
