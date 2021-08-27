@@ -1,5 +1,3 @@
-import requests
-import base64
 import time
 import RPi.GPIO as GPIO
 
@@ -12,4 +10,5 @@ while True:
   lcd.write_string('Sabretracker')
   lcd.crlf()
   lcd.write_string('Sabretracker')
+  print('print lcd')
   time.sleep(5)
