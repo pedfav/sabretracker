@@ -5,7 +5,7 @@ import pynmea2
 
 while True:
   port="/dev/ttyAMA0"
-  ser=serial.Serial(port, baudrate=256000, timeout=0.5)
+  ser=serial.Serial(port, baudrate=9600, timeout=0.5)
   dataout = pynmea2.NMEAStreamReader()
   newdata=ser.readline()
   #newdata=newdata.decode('utf-8')
