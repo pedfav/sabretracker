@@ -16,7 +16,7 @@ while True:
     lcd.cursor_pos = (2, 0)
     lcd.write('c0ck 5uck3r')
 
-    received_data = (str)(ser.readline()) #read NMEA string received
+    received_data = ser.readline() #read NMEA string received
     print(received_data, "\n")
   except Exception as e:
     print(e)
