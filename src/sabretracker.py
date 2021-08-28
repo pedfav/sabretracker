@@ -13,7 +13,7 @@ ser=serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=0.5)
 
 while True:
   try:
-    #dataout = pynmea2.NMEAStreamReader()
+    dataout = pynmea2.NMEAStreamReader()
     newdata=ser.readline()
     newdata=newdata.decode('utf-8')
 
