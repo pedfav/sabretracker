@@ -4,7 +4,7 @@ import pynmea2
 import serial
 
 
-ser = serial.Serial('/dev/ttyS1', 9600, timeout=5.0)
+ser = serial.Serial('/dev/ttyAMA0', 9600, timeout=5.0)
 sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser))
 
 while 1:
