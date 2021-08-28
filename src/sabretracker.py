@@ -12,6 +12,10 @@ ser=serial.Serial("/dev/ttyS0", baudrate=9600, timeout=0.5)
 
 while True:
   try:
+    lcd.write('H4CK3r')
+    lcd.cursor_pos = (2, 0)
+    lcd.write('c0ck 5uck3r')
+
     received_data = (str)(ser.readline()) #read NMEA string received
     print(received_data, "\n")
   except Exception as e:
