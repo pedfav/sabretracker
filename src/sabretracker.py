@@ -13,14 +13,9 @@ ser=serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=0.5)
 
 while True:
   try:
-    lcd.clear()
-    lcd.write_string(str(uuid.uuid4())[:16])
-    lcd.cursor_pos=(1,0)
-    lcd.write_string(str(uuid.uuid4())[:16])
-
     received_data = ser.readline() #read NMEA string received
-    print(received_data, "\n")
     if received_data[0:6] == '$GPGGA':
+      print(received_data, "\n")
       msg = pynmea2.parse(received_data)
       latval = msg.lat
       concatlat = "lat:" + str(latval)
