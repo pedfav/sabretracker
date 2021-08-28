@@ -24,9 +24,9 @@ while True:
       gps = "Latitude=" + str(lat) + " and Longitude=" + str(lng)
       print(gps)
 
-      lcd.clear()
-      lcd.write_string(f'Lat={str(lat)}')
-      lcd.cursor_pos=(1,0)
-      lcd.write_string(f'Lng={str(lng)}')
+      # lcd.clear()
+      # lcd.write_string(f'Lat={str(lat)}')
+      # lcd.cursor_pos=(1,0)
+      # lcd.write_string(f'Lng={str(lng)}')
   except Exception as e:
     print('ops')
