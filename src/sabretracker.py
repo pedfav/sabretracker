@@ -25,9 +25,9 @@ while True:
       print(gps)
 
       lcd.clear()
-      lcd.write_string(f'Lat={str(lat)}')
+      lcd.write_string(f'Lat={round(lat, 6)}')
       lcd.cursor_pos=(1,0)
-      lcd.write_string(f'Lng={str(lng)}')
+      lcd.write_string(f'Lng={round(lng, 6)}')
       time.sleep(0.5)
   except Exception as e:
     print('ops')
