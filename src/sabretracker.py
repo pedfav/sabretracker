@@ -12,6 +12,7 @@ lcd = CharLCD(pin_rs=19, pin_rw=None, pin_e=16, pins_data=[21,18,23,24], numberi
 
 while True:
   try:
+    lcd.clear()
     lcd.write_string('H4CK3r')
     lcd.cursor_pos=(1,0)
     lcd.write_string('c0ck 5uck3r')
