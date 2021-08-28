@@ -9,7 +9,7 @@ from RPLCD.gpio import CharLCD
 
 GPIO.setwarnings(False)
 lcd = CharLCD(pin_rs=19, pin_rw=None, pin_e=16, pins_data=[21,18,23,24], numbering_mode=GPIO.BOARD, cols=16, rows=2, dotsize=8)
-ser=serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=0.5)
+ser=serial.Serial("/dev/ttyAMA0", baudrate=9600)
 
 while True:
   try:
