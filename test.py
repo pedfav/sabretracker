@@ -4,12 +4,12 @@ import string
 import pynmea2
 
 while True:
-  port="/dev/serial0"
+  port="/dev/ttyAMA0"
   ser=serial.Serial(port, baudrate=256000, timeout=0.5)
   dataout = pynmea2.NMEAStreamReader()
   newdata=ser.readline()
   newdata=newdata.decode('utf-8')
-  print(newdata)
+  #print(newdata)
 
   if newdata[0:6] == "$GPRMC":
     newmsg=pynmea2.parse(newdata)
