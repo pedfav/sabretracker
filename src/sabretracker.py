@@ -20,5 +20,16 @@ while True:
 
     received_data = ser.readline() #read NMEA string received
     print(received_data, "\n")
+    if received_data[0:6] == '$GPGGA':
+      msg = pynmea2.parse(received_data)
+      latval = msg.lat
+      concatlat = "lat:" + str(latval)
+
+      longval = msg.lon
+      concatlong = "long:"+ str(longval)
+
+      lcd.write_string(concatlat)
+      lcd.cursor_pos=(1,0)
+      lcd.write_string(concatlong)
   except Exception as e:
     print(e)
