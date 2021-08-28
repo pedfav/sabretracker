@@ -9,22 +9,25 @@ from RPLCD.gpio import CharLCD
 
 GPIO.setwarnings(False)
 lcd = CharLCD(pin_rs=19, pin_rw=None, pin_e=16, pins_data=[21,18,23,24], numbering_mode=GPIO.BOARD, cols=16, rows=2, dotsize=8)
-ser=serial.Serial("/dev/ttyAMA0", baudrate=9600)
+ser=serial.Serial(port, baudrate=9600, timeout=0.5)
 
 while True:
   try:
-    received_data = ser.readline() #read NMEA string received
-    if received_data[0:6] == '$GPGGA':
-      print(received_data, "\n")
-      msg = pynmea2.parse(received_data)
-      latval = msg.lat
-      concatlat = "lat:" + str(latval)
+    port="/dev/ttyAMA0"
+    dataout = pynmea2.NMEAStreamReader()
+    newdata=ser.readline()
+    newdata=newdata.decode('utf-8')
 
-      longval = msg.lon
-      concatlong = "long:"+ str(longval)
+    if newdata[0:6] == "$GPRMC":
+      newmsg=pynmea2.parse(newdata)
+      lat=newmsg.latitude
+      lng=newmsg.longitude
+      gps = "Latitude=" + str(lat) + " and Longitude=" + str(lng)
+      print(gps)
 
-      lcd.write_string(concatlat)
+      lcd.clear()
+      lcd.write_string(f'Lat={str(lat)}')
       lcd.cursor_pos=(1,0)
-      lcd.write_string(concatlong)
+      lcd.write_string(f'Lng={str(lng)}')
   except Exception as e:
-    print(e)
+    print('ops')
