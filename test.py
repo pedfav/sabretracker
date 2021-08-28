@@ -8,8 +8,8 @@ while True:
   ser=serial.Serial(port, baudrate=256000, timeout=0.5)
   dataout = pynmea2.NMEAStreamReader()
   newdata=ser.readline()
-  newdata=newdata.decode('utf-8')
-  #print(newdata)
+  #newdata=newdata.decode('utf-8')
+  print(newdata)
 
   if newdata[0:6] == "$GPRMC":
     newmsg=pynmea2.parse(newdata)
