@@ -12,10 +12,9 @@ lcd = CharLCD(pin_rs=19, pin_rw=None, pin_e=16, pins_data=[21,18,23,24], numberi
 
 while True:
   try:
-    print('teste')
-    # lcd.write('H4CK3r')
-    # lcd.cursor_pos=(1,0)
-    # lcd.write('c0ck 5uck3r')
+    lcd.write('H4CK3r')
+    lcd.cursor_pos=(1,0)
+    lcd.write('c0ck 5uck3r')
 
     #received_data = ser.readline() #read NMEA string received
     #print(received_data, "\n")
