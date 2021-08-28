@@ -17,6 +17,7 @@ while True:
     lcd.write_string(str(uuid.uuid4())[:16])
     lcd.cursor_pos=(1,0)
     lcd.write_string(str(uuid.uuid4())[:16])
+    time.sleep(0.2)
 
     received_data = ser.readline() #read NMEA string received
     print(received_data, "\n")
