@@ -28,5 +28,6 @@ while True:
       lcd.write_string(f'Lat={str(lat)}')
       lcd.cursor_pos=(1,0)
       lcd.write_string(f'Lng={str(lng)}')
+      time.sleep(0.5)
   except Exception as e:
     print('ops')
