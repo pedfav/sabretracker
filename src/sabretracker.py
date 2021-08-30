@@ -20,15 +20,20 @@ while True:
 
     if newdata[0:6] == "$GPRMC":
       newmsg=pynmea2.parse(newdata)
-      print(newmsg)
       lat=newmsg.latitude
       lng=newmsg.longitude
       gps = "Latitude=" + str(lat) + " and Longitude=" + str(lng)
-      print(gps)
+      #print(gps)
 
       lcd.clear()
       lcd.write_string(f'Lat={str(lat)}'[:16])
       lcd.cursor_pos=(1,0)
       lcd.write_string(f'Lng={str(lng)}'[:16])
+
+    if newdata[0:6] == "$GPVTG":
+      msg = newdata.split(',')
+      speed = msg[7]
+      print(speed)
+  
   except Exception as e:
     print(f'ops with error={e}')
