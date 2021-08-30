@@ -26,7 +26,7 @@ while True:
       print(gps)
 
       lcd.clear()
-      lcd.write_string(f'{str(lat)[:7]} {str(lat)[:7]}')
+      lcd.write_string(f'{str(lat)[:7]}*{str(lat)[:7]}')
       lcd.cursor_pos=(1,0)
 
     if newdata[0:6] == "$GPVTG":
