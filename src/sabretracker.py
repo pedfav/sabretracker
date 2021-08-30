@@ -16,6 +16,7 @@ while True:
     dataout = pynmea2.NMEAStreamReader()
     newdata=ser.readline()
     newdata=newdata.decode('utf-8')
+    print(gps)
 
     if newdata[0:6] == "$GPRMC":
       newmsg=pynmea2.parse(newdata)
