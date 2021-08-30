@@ -30,4 +30,4 @@ while True:
       lcd.cursor_pos=(1,0)
       lcd.write_string(f'Lng={str(lng)}'[:16])
   except Exception as e:
-    print('ops')
+    print(f'ops with error={e}')
