@@ -29,14 +29,6 @@ while True:
       lcd.write_string(f'Lat={str(lat)}'[:16])
       lcd.cursor_pos=(1,0)
       lcd.write_string(f'Lng={str(lng)}'[:16])
-
-    # if newdata[0:6] == "$GPVTG":
-    #   msg = newdata.split(',')
-    #   speed = msg[7]
-    #   print(speed)
-    #   lcd.clear()
-    #   lcd.write_string(f"{speed} km/h")
-    #   time.sleep(0.5)
     
     if newdata.startswith("$GPVTG") :
       data = pynmea2.parse(newdata)
@@ -46,6 +38,13 @@ while True:
       data = pynmea2.parse(newdata)
       gpsSpeedText2 = "Speed GPRMC: {speed} Kmh".format(speed=data.spd_over_grnd)
       print(gpsSpeedText2)
+    
+    time.sleep(0.5)
+    lcd.clear()
+    lcd.write_string(gpsSpeedText)
+    lcd.cursor_pos=(1,0)
+    lcd.write_string(gpsSpeedText2)
+    time.sleep(0.5)
 
   except Exception as e:
     print(f'ops with error={e}')
