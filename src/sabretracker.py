@@ -40,8 +40,8 @@ while True:
       if(gpio.input(15) == 1):
         print_to_lcd(f'Lat={str(lat)}'[:16], f'Lng={str(lng)}'[:16])
 
-    gpsSpeedText = ''
-    gpsSpeedText2 = ''
+    gpsSpeedText = 'not found'
+    gpsSpeedText2 = 'not found'
     if newdata.startswith("$GPVTG") :
       data = pynmea2.parse(newdata).spd_over_grnd_kmph
       gpsSpeedText = f"GPVTG: {xstr(data)} Kmh"
@@ -52,7 +52,6 @@ while True:
       print(gpsSpeedText2)
 
     if(gpio.input(15) != 1):
-      print('lcd')
       print_to_lcd(gpsSpeedText, gpsSpeedText2)
 
   except Exception as e:
