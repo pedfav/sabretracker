@@ -18,7 +18,7 @@ while True:
     newdata=newdata.decode('utf-8')
     #print(gps)
 
-    if newdata[0:6] == "$GPRMC":
+    if newdata.startswith("$GPRMC"):
       newmsg=pynmea2.parse(newdata)
       lat=newmsg.latitude
       lng=newmsg.longitude
@@ -30,13 +30,13 @@ while True:
       lcd.cursor_pos=(1,0)
       lcd.write_string(f'Lng={str(lng)}'[:16])
 
-    if newdata[0:6] == "$GPVTG":
-      msg = newdata.split(',')
-      speed = msg[7]
-      print(speed)
-      lcd.clear()
-      lcd.write_string(f"{speed} km/h")
-      time.sleep(0.5)
+    # if newdata[0:6] == "$GPVTG":
+    #   msg = newdata.split(',')
+    #   speed = msg[7]
+    #   print(speed)
+    #   lcd.clear()
+    #   lcd.write_string(f"{speed} km/h")
+    #   time.sleep(0.5)
     
     if newdata.startswith("$GPVTG") :
       data = pynmea2.parse(newdata)
