@@ -37,6 +37,13 @@ while True:
       lcd.clear()
       lcd.write_string(f"{speed} km/h")
       time.sleep(0.5)
+    
+    if newdata.startswith("$GPVTG") :
+      data = pynmea2.parse(newdata)
+      gpsSpeedText = "Speed: {speed} Kmh".format(speed=data.spd_over_grnd_kmph)
+    if newdata.startswith("$GPRMC") :
+      data = pynmea2.parse(newdata)
+      gpsSpeedText2 = "Speed: {speed} Kmh".format(speed=data.spd_over_grnd)
   
   except Exception as e:
     print(f'ops with error={e}')
