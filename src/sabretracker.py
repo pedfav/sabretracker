@@ -40,11 +40,11 @@ while True:
     
     if newdata.startswith("$GPVTG") :
       data = pynmea2.parse(newdata)
-      gpsSpeedText = "Speed: {speed} Kmh".format(speed=data.spd_over_grnd_kmph)
+      gpsSpeedText = "Speed GPVTG: {speed} Kmh".format(speed=data.spd_over_grnd_kmph)
       print(gpsSpeedText)
     if newdata.startswith("$GPRMC") :
       data = pynmea2.parse(newdata)
-      gpsSpeedText2 = "Speed: {speed} Kmh".format(speed=data.spd_over_grnd)
+      gpsSpeedText2 = "Speed GPRMC: {speed} Kmh".format(speed=data.spd_over_grnd)
       print(gpsSpeedText2)
 
   except Exception as e:
