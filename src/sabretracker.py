@@ -40,6 +40,7 @@ while True:
     gpsSpeedText = ''
     gpsSpeedText2 = ''
     if newdata.startswith("$GPVTG") :
+      print('clid')
       data = pynmea2.parse(newdata)
       gpsSpeedText = "GPVTG: {speed} Kmh".format(speed=data.spd_over_grnd_kmph)
       print(gpsSpeedText)
