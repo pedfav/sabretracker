@@ -52,6 +52,7 @@ while True:
       print(gpsSpeedText2)
 
     if(gpio.input(15) != 1):
+      print('lcd')
       print_to_lcd(gpsSpeedText, gpsSpeedText2)
 
   except Exception as e:
