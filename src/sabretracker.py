@@ -31,6 +31,8 @@ while True:
       lcd.write_string(f'Lng={str(lng)}'[:16])
       time.sleep(0.5)
 
+    gpsSpeedText = ''
+    gpsSpeedText2 = ''
     if newdata.startswith("$GPVTG") :
       data = pynmea2.parse(newdata)
       gpsSpeedText = "Speed GPVTG: {speed} Kmh".format(speed=data.spd_over_grnd_kmph)
