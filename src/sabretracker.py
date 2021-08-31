@@ -51,7 +51,7 @@ while True:
       gpsSpeedText2 = f"GPRMC: {xstr(data)} Kmh"
       print(gpsSpeedText2)
 
-    if(gpio.input(15) == 0):
+    if(gpio.input(15) != 1):
       print_to_lcd(gpsSpeedText, gpsSpeedText2)
 
   except Exception as e:
