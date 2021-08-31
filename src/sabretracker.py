@@ -19,6 +19,9 @@ def print_to_lcd(first_line, second_line):
   lcd.cursor_pos=(1,0)
   lcd.write_string(second_line)
 
+def xstr(s):
+    return '' if s is None else str(s)
+
 while True:
   try:
     ser=serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=0.5)
@@ -41,11 +44,11 @@ while True:
     gpsSpeedText2 = ''
     if newdata.startswith("$GPVTG") :
       data = pynmea2.parse(newdata).spd_over_grnd_kmph
-      gpsSpeedText = f"GPVTG: {data} Kmh"
+      gpsSpeedText = f"GPVTG: {xstr(data)} Kmh"
       print(gpsSpeedText)
     if newdata.startswith("$GPRMC") :
       data = pynmea2.parse(newdata).spd_over_grnd
-      gpsSpeedText2 = f"GPVTG: {data} Kmh"
+      gpsSpeedText2 = f"GPRMC: {xstr(data)} Kmh"
       print(gpsSpeedText2)
 
     if(gpio.input(15) == 0):
