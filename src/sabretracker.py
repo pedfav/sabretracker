@@ -37,17 +37,17 @@ while True:
       if(gpio.input(15) == 1):
         print_to_lcd(f'Lat={str(lat)}'[:16], f'Lng={str(lng)}'[:16])
 
-    gpsSpeedText = 'not found'
-    gpsSpeedText2 = 'not found'
+    gpsSpeedText = ''
+    gpsSpeedText2 = ''
     if newdata.startswith("$GPVTG") :
-      data = pynmea2.parse(newdata)
-      gpsSpeedText = "GPVTG: {speed} Kmh".format(speed=data.spd_over_grnd_kmph)
+      data = pynmea2.parse(newdata).spd_over_grnd_kmph
+      gpsSpeedText = f"GPVTG: {data} Kmh"
       print(gpsSpeedText)
     if newdata.startswith("$GPRMC") :
-      data = pynmea2.parse(newdata)
-      gpsSpeedText2 = "GPRMC: {speed} Kmh".format(speed=data.spd_over_grnd)
+      data = pynmea2.parse(newdata).spd_over_grnd
+      gpsSpeedText2 = f"GPVTG: {data} Kmh"
       print(gpsSpeedText2)
-    
+
     if(gpio.input(15) == 0):
       print_to_lcd(gpsSpeedText, gpsSpeedText2)
 
